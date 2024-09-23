@@ -1,0 +1,744 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:sans-serif ;
+    background-color: #ffffff;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Evita que haya scroll horizontal no deseado */
+}
+  /* Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff; /* Fondo blanco para el navbar */
+  padding: 5px 30px;
+  position: sticky; /* Fija el navbar en la pantalla */
+  top: 0; /* Se adhiere a la parte superior de la ventana */
+  z-index: 1000; /* Asegura que el navbar esté por encima de otros elementos */
+}
+
+.logo img {
+    width: 100px; /* Ajusta el tamaño del logo */
+}
+
+/* Enlaces de navegación normales */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    color: #c8102e; 
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    height: auto;
+    padding: 8px;
+}
+.nav-links a:hover {    
+    transform: scale(1.05); /* Efecto de agrandamiento más sutil al pasar el mouse */
+    box-shadow: 0 0 10px rgb(254, 5, 5); /* Mayor sombra en hover */
+}
+
+/* Hamburguesa - Oculta en pantallas grandes */
+.hamburguer-menu {
+    display: none; /* Solo se muestra en pantallas pequeñas */
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.hamburguer-menu span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: rgb(255, 24, 24);
+}
+
+/* Menú de hamburguesa (links para pantallas pequeñas) */
+.hamburger-links {
+    list-style: none;
+    display: none; /* Oculto por defecto */
+    flex-direction: column;
+    gap: 20px;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: #ffffff; /* Cambia el color de fondo del menú hamburguesa */
+    width: 100%;
+    padding: 20px;
+    z-index: 20; /* Asegura que esté por encima del carrusel */
+}
+
+.hamburger-links li {
+    margin: 20px 0; /* Espaciado entre los enlaces */
+}
+
+.hamburger-links a {
+    text-decoration: none;
+    color: #fd1c1c; /* Cambia el color de los enlaces del menú hamburguesa */
+    font-size: 1.5rem;
+}
+
+/* Mostrar el menú de hamburguesa cuando esté activo */
+.hamburger-links.active {
+    display: flex;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+    /* Mostrar el menú hamburguesa en pantallas pequeñas */
+    .hamburguer-menu {
+        display: flex;
+    }
+
+    /* Ocultar los enlaces de navegación tradicionales en pantallas pequeñas */
+    .nav-links {
+        display: none;
+    }
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+    .hamburguer-menu {
+        display: flex; /* Mostrar el menú de hamburguesa en pantallas pequeñas */
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #c8102e; /* Mismo color que el nav */
+        width: 100%;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        display: none; /* Oculto inicialmente */
+        padding-top: 20px;
+        z-index: 20; /* Asegura que el menú esté por encima de otros elementos */
+    }
+
+    .nav-links.active {
+        display: flex; /* Mostrar el menú cuando se active */
+    }
+
+    .nav-links li {
+        margin: 20px 0; /* Más espacio entre los enlaces */
+    }
+
+    .nav-links a {
+        font-size: 1.5rem; /* Aumentar tamaño de los enlaces en móviles */
+    }
+}
+
+
+/*header {
+    background-color: #ffffff;
+    color: white;
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.logo img {
+    max-width: 100px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: rgb(254, 5, 5);
+    text-decoration: none;
+    font-weight: bold;
+    position: relative; /* Necesario para posicionar la línea 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves 
+    height: auto; /* Mantiene la proporción de la imagen 
+    border-radius: 10px; /* Bordes redondeados 
+    padding: 10px;
+}
+nav ul li a:hover{
+    transform: scale(3.05); /* Efecto de agrandamiento al pasar el mouse 
+    box-shadow: 0 0 10px rgb(254, 5, 5) ; /* Mayor sombra en hover 
+}
+/*nav ul li a.active::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #f00;
+    border-radius: 5px;  
+} */
+
+ /*Estilos para el carrusel */
+.carousel {
+    margin: 10px auto;
+    max-width: 1600px;
+    position: relative;
+    overflow: hidden; /* Oculta las partes que salen del contenedor */
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.carousel-banner {
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%; /* Se ajusta a una imagen visible */
+}
+
+.carousel-slide img {
+    width: 100%; /* Muestra solo una imagen a la vez */
+    height: auto;
+    object-fit: cover;
+}
+/* Clase para ocultar la sección del carousel */
+.carousel.hidden {
+    display: none;
+}
+
+section.products {
+    padding: 30px; /* Reduce el padding para móviles */
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajuste para móviles */
+    gap: 15px; /* Reduce el espacio entre las tarjetas */
+    max-width: 1000px;
+    width: 100%;
+}
+
+.product {
+    background-color: #f32d2d;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    padding: 15px; /* Reduce el padding en móviles */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product img {
+    width: 25%; /* Asegura que las imágenes ocupen el ancho completo */
+    height: auto;
+    border-radius: 0;
+    margin-bottom: 10px; /* Reduce el margen inferior */
+    transition: transform 0.5s ease-in-out;
+}
+
+.product:hover img {
+    transform: scale(1.1);
+}
+
+.product h3 {
+    color: #ffffff;
+    font-size: 1.6rem; /* Ajusta el tamaño del texto para móviles */
+    margin-bottom: 8px; /* Reduce el margen */
+}
+
+.product h5 {
+    color: #dbdbdb;
+    font-size: 0.9rem; /* Ajusta el tamaño del texto secundario */
+    line-height: 1.4;
+}
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 600px) {
+    section.products {
+        padding: 20px; /* Más ajuste para pantallas pequeñas */
+    }
+
+    .product {
+        padding: 10px; /* Ajusta el padding para dispositivos móviles */
+    }
+
+    .product h3 {
+        font-size: 1.4rem; /* Reduce más el tamaño del título */
+    }
+
+    .product h5 {
+        font-size: 0.85rem; /* Ajusta el tamaño del texto en pantallas pequeñas */
+    }
+}
+
+
+
+#Papeleria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px; /* Padding ajustado para móviles */
+    background-color: #ffffff;  
+    text-align: center;
+}
+
+.Pape {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.Pape img.clip {
+    width: 50px; /* Tamaño ajustado para la imagen */
+    margin-bottom: 10px;
+}
+
+.Pape h1 {
+    color: #c8102e; /* Rojo */
+    font-size: 2.2rem; /* Ajusta el tamaño de la fuente en móviles */
+    margin-bottom: 20px;
+}
+
+/* Estilos para la sección y las tarjetas */
+.texto2 {
+    margin-top: 20px;
+    padding: 0 10px; /* Reduce el padding para móviles */
+}
+
+.texto2 h4 {
+    font-size: 1.1rem; /* Ajuste de tamaño de texto en móviles */
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.4; /* Mejora la legibilidad en móviles */
+    text-align: center; /* Centra el texto */
+}
+
+/* Media Queries para ajustar aún más en pantallas pequeñas */
+@media (max-width: 600px) {
+    .Pape h1 {
+        font-size: 1.8rem; /* Reduce el tamaño del título en pantallas más pequeñas */
+    }
+
+    .texto2 h4 {
+        font-size: 1rem; /* Reduce el tamaño del subtítulo */
+        line-height: 1.2; /* Ajuste adicional en la altura de línea */
+    }
+
+    .Pape img.clip {
+        width: 40px; /* Reduce aún más el tamaño de la imagen */
+    }
+
+    #Papeleria {
+        padding: 5px; /* Reduce el padding en pantallas pequeñas */
+    }
+
+    .texto2 {
+        padding: 0 5px; /* Ajusta el padding lateral */
+    }
+}
+
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Reduce el gap entre tarjetas */
+    justify-content: center; /* Centra las tarjetas */
+    padding: 0 10px;
+}
+
+.card {
+    background-color: #f32d2d;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    padding: 15px; /* Reduce el padding */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    width: 100%; /* Ocupa todo el ancho en móviles */
+    max-width: 200px; /* Establece un ancho máximo */
+    margin-bottom: 20px; /* Añade espacio entre tarjetas */
+}
+
+.card h4 {
+    font-size: 1.1em; /* Reduce un poco el tamaño del texto */
+    color: #ff0000;
+    margin-bottom: 10px;
+}
+
+.card ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card ul li {
+    font-size: 0.9rem; /* Reduce el tamaño del texto en la lista */
+    color: #ffffff;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+ 
+.carrucel-papeleria {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+  
+.carrucel-pape{
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+}
+  
+.carrucel-item{
+    min-width: 100%; /* Cada imagen ocupa el 100% del ancho del contenedor */
+    box-sizing: border-box;
+}
+  
+.carrucel-item img {
+    height: 200px;
+    display: block;
+    margin: 0 auto;  /* Centra las imágenes */
+    border-radius: 10px;
+}
+  
+@media (min-width: 768px) {
+    .carrucel-papeleria {
+      width: 50%;  /* Ajusta el tamaño en pantallas grandes */
+    }
+}
+  
+.gallery-papeleria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.gallery-pape {
+    width: 100%;
+    height: 200px; /* Tamaño uniforme para todas las imágenes */
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.gallery-pape img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantiene las proporciones sin deformar */
+    transition: transform 0.3s ease;
+}
+
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+    .Pape h1 {
+        font-size: 2em;
+    }
+
+    .texto2 h4 {
+        font-size: 1em;
+        padding: 10px; /* Reduce el padding para móviles */
+    }
+
+    .Pape img.clip {
+        width: 40px; /* Ajusta el tamaño de la imagen en móviles */
+    }
+
+    .colores img.separador {
+        max-width: 100%;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 250px; /* Reduce el ancho máximo en móviles */
+        padding: 10px; /* Reduce aún más el padding en móviles */
+    }
+
+    .gallery-papeleria {
+        grid-template-columns: 1fr; /* Una sola columna en móviles */
+    }
+}
+
+.merceria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.merce {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.merce img.tijeras {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.title {
+    color: #c8102e; /* Rojo */
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.texto3 {
+    max-width: 800px;
+    text-align: center;
+    padding: 20px;
+}
+
+.subtext {
+    color: #000000;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+.carrucel-merceria {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+  
+.carrucel-merce {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+}
+  
+.gallery-item {
+    min-width: 100%; /* Cada imagen ocupa el 100% del ancho del contenedor */
+    box-sizing: border-box;
+}
+  
+.gallery-item img {
+    height: 200px;
+    display: block;
+    margin: 0 auto;  /* Centra las imágenes */
+    border-radius: 10px;
+}
+  
+@media (min-width: 768px) {
+    .carrucel-merceria {
+      width: 50%;  /* Ajusta el tamaño en pantallas grandes */
+    }
+}
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtext {
+        font-size: 1rem;
+    }
+
+    .merce img.tijeras {
+        width: 80px;
+    }
+}
+
+/* Estilos generales para la sección Juguetería */
+.Jugueteria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.juguete {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.Jugueteria h1 {
+    color: #c8102e; /* Rojo */
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el texto principal */
+.texto4 {
+    max-width: 100%; /* Para que se ajuste al ancho de la pantalla */
+    text-align: center;
+    padding: 20px;
+}
+
+.subtex4, .subconceptos {
+    color: #000000;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+/* Estilo para el contenedor de palabras */
+.palabras {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Alineación centrada para pantallas pequeñas */
+    padding: 0; /* Ajuste de padding para dispositivos móviles */
+}
+
+.conceptos {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.conceptos1 {
+    background-color: #f32d2d;
+    border: 2px solid #000000; /* Rojo */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.conceptos1 ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.conceptos1 ul li {
+    font-size: 1rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* Estilo para los elementos dentro de conceptos1 */
+.conceptos1 h4 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Media query para pantallas más pequeñas (móviles) */
+@media (max-width: 768px) {
+    .Jugueteria h1 {
+        font-size: 2rem;
+    }
+
+    .palabras {
+        padding: 0 20px; /* Reducir padding en dispositivos móviles */
+    }
+
+    .conceptos1 {
+        padding: 15px;
+    }
+
+    .texto4 {
+        padding: 10px;
+    }
+    .Jugueteria {
+        padding: 20px 10px; /* Reduce el padding en pantallas pequeñas */
+    }
+
+    .texto4, .subtex4, .conceptos {
+        padding: 10px 10px; /* Reduce el padding en pantallas pequeñas */
+    }
+
+    .palabras {
+        flex-direction: column; /* Alinea los elementos en columna en pantallas pequeñas */
+        gap: 10px; /* Espacio entre los elementos */
+    }
+}
+.carrucel-toys{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+  
+.carrucel-jugue{
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+}
+  
+.carrucel-image {
+    min-width: 100%; /* Cada imagen ocupa el 100% del ancho del contenedor */
+    box-sizing: border-box;
+}
+  
+.carrucel-image img {
+    height: 200px;
+    display: block;
+    margin: 0 auto;  /* Centra las imágenes */
+    border-radius: 10px;
+}
+  
+@media (min-width: 768px) {
+    .carrucel-toys {
+      width: 50%;  /* Ajusta el tamaño en pantallas grandes */
+    }
+}
+
+footer {
+    background-color: #ff0000;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 16px; /* Asegura un tamaño de fuente legible en móviles */
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: center; /* Centra los íconos en el footer */
+    flex-wrap: wrap; /* Permite que los íconos se ajusten en varias líneas si es necesario */
+    margin-top: 10px; /* Espacio adicional encima de los íconos */
+}
+
+.footer-icons a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 34px;
+    transition: color 0.3s ease; /* Mueve la transición aquí para que esté presente en todos los estados */
+}
+
+.footer-icons a:hover {
+    color: rgb(0, 0, 0); /* Cambia el color al negro cuando pases el cursor */
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+    footer {
+        padding: 15px; /* Ajusta el padding en pantallas pequeñas */
+    }
+
+    .footer-icons a {
+        font-size: 28px; /* Ajusta el tamaño de los íconos en pantallas pequeñas */
+        margin: 0 5px; /* Reduce el margen entre íconos en pantallas pequeñas */
+    }
+}

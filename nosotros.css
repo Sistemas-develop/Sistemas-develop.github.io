@@ -1,0 +1,283 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:sans-serif ;
+  background-color: #ffffff;
+  color: #f31e07;
+}
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff; /* Fondo blanco para el navbar */
+  padding: 5px 30px;
+  position: sticky; /* Fija el navbar en la pantalla */
+  top: 0; /* Se adhiere a la parte superior de la ventana */
+  z-index: 1000; /* Asegura que el navbar esté por encima de otros elementos */
+}
+
+.logo img {
+  max-width: 100px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li {
+  display: inline;
+}
+
+.nav-links a {
+  color: #c8102e; 
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+  height: auto;
+  padding: 8px;
+}
+
+.nav-links a:hover {    
+  transform: scale(1.05); /* Efecto de agrandamiento más sutil al pasar el mouse */
+  box-shadow: 0 0 10px rgb(254, 5, 5); /* Mayor sombra en hover */
+}
+/* Hamburguesa - Oculta en pantallas grandes */
+.hamburguer-menu {
+  display: none; /* Solo se muestra en pantallas pequeñas */
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+
+.hamburguer-menu span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: rgb(255, 24, 24);
+}
+
+/* Menú de hamburguesa (links para pantallas pequeñas) */
+.hamburger-links {
+  list-style: none;
+  display: none; /* Oculto por defecto */
+  flex-direction: column;
+  gap: 20px;
+  position: absolute;
+  top: 70px;
+  right: 0;
+  background-color: #ffffff; /* Cambia el color de fondo del menú hamburguesa */
+  width: 100%;
+  padding: 20px;
+  z-index: 20; /* Asegura que esté por encima del carrusel */
+}
+
+.hamburger-links li {
+  margin: 20px 0; /* Espaciado entre los enlaces */
+}
+
+.hamburger-links a {
+  text-decoration: none;
+  color: #fd1c1c; /* Cambia el color de los enlaces del menú hamburguesa */
+  font-size: 1.5rem;
+}
+
+/* Mostrar el menú de hamburguesa cuando esté activo */
+.hamburger-links.active {
+  display: flex;
+}
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  /* Mostrar el menú hamburguesa en pantallas pequeñas */
+  .hamburguer-menu {
+      display: flex;
+  }
+
+  /* Ocultar los enlaces de navegación tradicionales en pantallas pequeñas */
+  .nav-links {
+      display: none;
+  }
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  .hamburguer-menu {
+      display: flex; /* Mostrar el menú de hamburguesa en pantallas pequeñas */
+  }
+
+  .nav-links {
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background-color: #c8102e; /* Mismo color que el nav */
+      width: 100%;
+      height: 100vh;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      display: none; /* Oculto inicialmente */
+      padding-top: 20px;
+      z-index: 20; /* Asegura que el menú esté por encima de otros elementos */
+  }
+
+  .nav-links.active {
+      display: flex; /* Mostrar el menú cuando se active */
+  }
+
+  .nav-links li {
+      margin: 20px 0; /* Más espacio entre los enlaces */
+  }
+
+  .nav-links a {
+      font-size: 1.5rem; /* Aumentar tamaño de los enlaces en móviles */
+  }
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .contact-btn {
+    margin-top: 10px;
+  }
+}
+section.Nosotros {
+  padding: 5px 10px; /* Ajuste en el padding para mayor espacio en móviles */
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.US img {
+  width: 50px;
+  margin-bottom: 10px;
+}
+
+.Nosotros h1 {
+  color: #c8102e; /* Rojo */
+  font-size: 2.5rem; /* Ajusta el tamaño de fuente según el diseño */
+  margin-bottom: 5px;
+}
+
+/* Texto en h4 */
+.texto h4 {
+  color: #555;
+  line-height: 1.4;
+  padding: 0 15%; /* Mantiene un poco de espacio a los lados */
+  text-align: justify;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  .Nosotros h1 {
+      font-size: 2rem; /* Reduce el tamaño del título en móviles */
+  }
+
+  .texto h4 {
+      padding: 0 5%; /* Reduce el padding en pantallas pequeñas */
+      font-size: 1rem; /* Ajusta el tamaño de fuente del texto */
+  }
+
+  .US img {
+      width: 40px; /* Ajusta el tamaño de la imagen en móviles */
+  }
+}
+
+
+section.descripciones {
+  padding: 15px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.descripciones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  max-width: 650px;
+  width: 100%;
+}
+
+/* Estilo para cada tarjeta de descripción */
+.descrip {
+  background-color: #f32d2d;
+  border: 2px solid #000000; /* Rojo */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+}
+
+.descrip:hover {
+  transform: scale(1.05);
+}
+
+.descrip img {
+  height: auto;
+  border-radius: 0px;
+  margin-bottom: 5px;
+  transition: transform 0.5s ease-in-out; /* Animación de zoom */
+}
+
+.descrip h3 {
+  color: #ffffff; /* Texto en blanco */
+  font-size: 1.8rem; /* Tamaño del título */
+  margin-bottom: 10px;
+}
+
+.descrip h5 {
+  color: #dbdbdb; /* Color del texto */
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  .descripciones-grid {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Reduce el tamaño mínimo en móviles */
+      gap: 10px; /* Reduce el espacio entre las tarjetas */
+  }
+
+  .descrip h3 {
+      font-size: 1.5rem; /* Reduce el tamaño del título en móviles */
+  }
+
+  .descrip h5 {
+      font-size: 0.9rem; /* Ajusta el tamaño del subtítulo en móviles */
+  }
+
+  .descrip {
+      padding: 15px; /* Ajusta el padding para tarjetas en móviles */
+  }
+}
+
+footer {
+  background-color: #ff0000;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+.footer-icons a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 34px;
+  text-align: end;
+}
+
+.footer-icons a:hover {
+  color: rgb(0, 0, 0); /* Cambia el color al rojo cuando pases el cursor */
+  transition: color 0.3s ease;
+}

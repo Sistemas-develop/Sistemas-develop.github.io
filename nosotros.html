@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros</title>
+    <link rel="icon" type="image/x-icon" href="images/LOGO icono.ico">
+    <link rel="stylesheet" href="nosotros.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <nav>
+    <div class="logo">
+        <a href="index.html"><img src="images/LOGO.png" alt="Logo"></a>
+    </div>
+
+    <!-- Enlaces de navegación normales (navbar para pantallas grandes) -->
+    <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+
+    <!-- Menú de hamburguesa (solo visible en pantallas móviles) -->
+    <div class="hamburguer-menu" id="hamburguer-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Enlaces de navegación del menú hamburguesa (solo para pantallas pequeñas) -->
+    <ul class="hamburger-links" id="hamburger-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+</nav>
+    <section class="Nosotros">
+        <div class="US">
+          <img src="images/tienda.png" loading="lazy" alt="" class="tienda">
+          <h1>NOSOTROS</h1>
+        </div>
+        <div class="texto">
+          <h4>La negociación Papelería y Mercería “Musa” es una empresa que inició en la Ciudad de Tamazunchale, S.L.P. por los años 50´s, dedicándose a vender desde artículos de mercería, bonetería, telas, zapatos y hasta electrónicos...</h4>
+          <h4>En el mes de Marzo de 1980 por razones familiares esta negociación se trasladó a Ciudad Valles, S.L.P., colocándose en la calle Porfirio Díaz No. 25 muy cercana a la zona de los mercados...</h4>
+          <h4>En la actualidad este negocio cuenta con Departamentos de Papelería, Mercería, Juguetería, Bicicletas y Refacciones, cada uno con su respectivo encargado.</h4>
+        </div>
+      </section>
+      
+      <section class="descripciones">
+        <div class="descripciones-grid">
+          <div class="descrip">
+            <img src="images/liderazgo.png" alt="">
+            <h3>MISIÓN</h3>
+            <h5>
+              Somos una empresa que ofrece atención de calidad y una amplia variedad de productos de papelería, mercería y juguetería a precios competitivos.</h5>
+          </div>
+          <div class="descrip">
+            <img src="images/vision.png" alt="">
+            <h3>VISIÓN</h3>
+            <h5>
+              Ser una empresa líder en el sector de papelería, reconocida a nivel nacional por su seriedad, responsabilidad y compromiso, tanto en el mediano como en el largo plazo.</h5>
+          </div>
+        </div>
+      </section>
+    <footer>
+        <p>&copy; 2024 Papelería Musa - Todos los derechos reservados.</p>
+        <div class="footer-icons">
+            <a href="https://www.facebook.com/profile.php?id=100063638913493" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </div>
+    </footer>
+<script>
+  document.getElementById('hamburguer-menu').addEventListener('click', function() {
+    const hamburgerLinks = document.getElementById('hamburger-links');
+    const carousel = document.querySelector('.carousel');
+
+    // Alternar la clase 'active' para mostrar/ocultar el menú
+    hamburgerLinks.classList.toggle('active');
+
+    // Ocultar o mostrar el carrusel dependiendo del estado del menú hamburguesa
+    if (hamburgerLinks.classList.contains('active')) {
+        carousel.classList.add('hidden');  // Oculta el carrusel
+    } else {
+        carousel.classList.remove('hidden');  // Muestra el carrusel
+    }
+});
+</script>
+   
+</body>
